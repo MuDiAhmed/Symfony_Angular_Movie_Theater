@@ -7,7 +7,8 @@ Movie Theater
 
 #Instructions
         `cd <app_root_path>`
-        create database user `movie_theater` pass `mov_thtr`
+        create database user `movie_theater` pass `mov_thtr` with all privileges
         run `composer install` to install the required packages
-        run `php bin/console doctrine:database:create` to create DataBase
-        run `php bin/console doctrine:query:sql 'ALTER DATABASE symfony_movie_theater CHARACTER SET utf8 COLLATE utf8_general_ci;'`
+        run `sudo php bin/console doctrine:database:create` to create DataBase
+        run `sudo php bin/console doctrine:query:sql 'ALTER DATABASE symfony_movie_theater CHARACTER SET utf8 COLLATE utf8_general_ci;'`
+        run `sudo php bin/console doctrine:migrations:migrate`
