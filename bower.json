@@ -1,0 +1,25 @@
+{
+  "name": "movie_theater",
+  "description": "project to reserve movies tickets",
+  "main": "n",
+  "authors": [
+    "Mohamed Ahmed"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/MuDiAhmed/Symfony_Angular_Movie_Theater",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "^1.5.7",
+    "ui-bootstrap": "^1.3.3",
+    "angular-ui-router": "ui-router#^0.3.1",
+    "bootstrap": "^3.3.6",
+    "angular-bootstrap": "^1.3.3",
+    "angular-resource": "^1.5.7"
+  }
+}

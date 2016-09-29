@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+{% verbatim %}
+<html ng-app="MyApp">
+{% endverbatim %}
+    <head>
+        <meta charset="UTF-8" />
+        {#<title>{% block title %}Welcome!{% endblock %}</title>#}
+        {% block stylesheets %}
+            <link href="{{ asset('bower_components/bootstrap/dist/css/bootstrap.min.css') }}" rel="stylesheet">
+            <link href="{{ asset('bower_components/bootstrap/dist/css/bootstrap-theme.min.css') }}" rel="stylesheet">
+            <link href="{{ asset('css/style.css') }}" rel="stylesheet">
+        {% endblock %}
+        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+    </head>
+    <body>
+        <span ui-view class="view-frame"></span>
+        {% block body %}{% endblock %}
+        {% block javascripts %}
+            <script src="{{ asset('bower_components/angular/angular.min.js') }}"></script>
+            <script src="{{ asset('bower_components/angular-ui-router/release/angular-ui-router.min.js') }}"></script>
+            <script src="{{ asset('bower_components/angular-resource/angular-resource.min.js') }}"></script>
+            <script src="{{ asset('js/app.js') }}"></script>
+            <script src="{{ asset('js/controller.js') }}"></script>
+        {% endblock %}
+    </body>
+</html>
