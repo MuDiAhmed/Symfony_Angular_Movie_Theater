@@ -24,12 +24,12 @@ class Shows
     private $id;
 
     /**
-     * @ORM\Column(type="time")
+     * @ORM\Column(type="string")
      */
     private $start_time;
 
     /**
-     * @ORM\Column(type="time")
+     * @ORM\Column(type="string")
      */
     private $end_time;
 
@@ -59,7 +59,7 @@ class Shows
     /**
      * Set startTime
      *
-     * @param \DateTime $startTime
+     * @param string $startTime
      *
      * @return Shows
      */
@@ -73,7 +73,7 @@ class Shows
     /**
      * Get startTime
      *
-     * @return \DateTime
+     * @return string
      */
     public function getStartTime()
     {
@@ -83,7 +83,7 @@ class Shows
     /**
      * Set endTime
      *
-     * @param \DateTime $endTime
+     * @param string $endTime
      *
      * @return Shows
      */
@@ -97,7 +97,7 @@ class Shows
     /**
      * Get endTime
      *
-     * @return \DateTime
+     * @return string
      */
     public function getEndTime()
     {

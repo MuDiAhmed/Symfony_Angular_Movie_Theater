@@ -40,3 +40,34 @@ controllers.controller('MoviesFormController',['$scope','Movies','GeneralService
         })
     }
 }]);
+
+controllers.controller('HallsController',['$scope','Halls',function($scope,Halls){
+    Halls.indexAction().then(function(response){
+        $scope.halls = response;
+    },function(err){
+        //TODO::handle error
+        console.log(err);
+    });
+    $scope.deleteMovie = function(id,index){
+        if(confirm('Are you sure you want to delete ' + $scope.halls[index].name )){
+            Halls.deleteAction(id).then(function(response){
+                $scope.halls.splice(index, 1);
+            },function(err){
+                //TODO::handle error
+                console.log(err);
+            })
+        }
+
+    }
+}]);
+controllers.controller('HallsFormController',['$scope','Halls','GeneralService',function($scope,Halls,GeneralService){
+    $scope.createHall = function(hall){
+        Halls.createAction(hall).then(function(response){
+            console.log(response);
+            GeneralService.redirect('halls',null,null);
+        },function(err){
+            //TODO::handle error
+            console.log(err);
+        })
+    }
+}]);

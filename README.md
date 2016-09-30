@@ -4,6 +4,7 @@ Movie Theater
 #Requirements
         PHP 5.6+
         MySQL  5.7
+        bower
 
 #Instructions
         `cd <app_root_path>`
@@ -13,3 +14,4 @@ Movie Theater
         run `sudo php bin/console doctrine:query:sql 'ALTER DATABASE symfony_movie_theater CHARACTER SET utf8 COLLATE utf8_general_ci;'`
         run `sudo php bin/console doctrine:migrations:migrate`
         run `sudo php bin/console doctrine:fixtures:load` to insert fake data to database
+        run `bower install` to install bower components

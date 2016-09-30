@@ -6,3 +6,8 @@ movies:
     type: rest
     resource: "@AppBundle/Controller/api/MoviesController.php"
     prefix:   api
+
+halls:
+    type: rest
+    resource: "@AppBundle/Controller/api/HallsController.php"
+    prefix:   api

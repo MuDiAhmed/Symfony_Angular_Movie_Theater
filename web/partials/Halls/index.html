@@ -1,0 +1,34 @@
+
+<div class="container-fluid">
+    <div class="row">
+        <a class="btn btn-default" ui-sref="halls-create">
+            Create Hall
+        </a>
+    </div>
+    <div class="row">
+        <div class="col-lg-3 col-md-4 col-xs-6 thumb" ng-repeat="hall in halls">
+        <!--<div ng-repeat="hall in halls" >-->
+            <div class="container-fluid thumbnail">
+                <div class="inner_wrapper row">
+                    <div class="col-lg-6 blue">
+                        <span>{{hall.name}}</span>
+                        <!--<img ng-src="{{movie.img}}" />-->
+                    </div>
+                    <div class="col-lg-6 align-right">
+                        <span class="fa fa-pencil-square-o pointer" aria-hidden="true"></span>
+                        <span ng-click="deleteMovie(hall.id,$index)" class="fa fa-trash-o pointer" aria-hidden="true"></span>
+                    </div>
+                </div>
+                <div class="row">
+                    Row Chairs: {{hall.row_total}}
+                </div>
+                <div class="row">
+                    Total Rows: {{hall.row_chairs}}
+                </div>
+                <div class="row">
+                    Total Chairs: {{hall.row_total*hall.row_chairs}}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
