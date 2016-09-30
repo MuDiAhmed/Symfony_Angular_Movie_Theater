@@ -1,0 +1,29 @@
+<div class="container-fluid">
+    <h1 class="text-capitalize">Create Movie</h1>
+    <form name="createMovieForm" ng-submit="createMovie(movie)" class="form-horizontal" novalidate>
+        <div class="row">
+            <div class="form-group">
+                <label class="col-lg-3 col-md-3 col-sm-3 control-label" for="title">Title</label>
+                <div class="col-lg-8 col-md-8 col-sm-8">
+                    <input class="form-control" type="text" name="title" id="title" ng-model="movie.title" required>
+                </div>
+            </div>
+            <div role="alert"   ng-messages="createMovie.title.$error"  
+                 ng-messages-include="/partials/global/error-messages.html"  
+                 ng-show="createMovieForm.name.$touched || createMovieForm.name.$dirty"  >
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group">
+                <label class="col-lg-3 col-md-3 col-sm-3 control-label" for="image">Image</label>
+                <div class="col-lg-8 col-md-8 col-sm-8">
+                    <input class="form-control" type="file" name="image" id="image" file-model="movie.img" required>
+                </div>
+            </div>
+            <div role="alert"   ng-messages="createMovie.image.$error"   ng-messages-include="/partials/global/error-messages.html"   ng-show="createMovieForm.name.$touched || createMovieForm.name.$dirty"  >
+            </div>
+        </div>
+        <input type="submit" value="Create Movie" class="btn btn-default" ng-disabled="!createMovieForm.$dirty || createMovieForm.$invalid"/>
+        <a ui-sref="movies">Cancel</a>
+    </form>
+</div>

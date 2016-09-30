@@ -13,12 +13,29 @@ controllers.controller('MoviesController',['$scope','Movies',function($scope,Mov
     Movies.indexAction().then(function(response){
         $scope.movies = response;
     },function(err){
+        //TODO::handle error
         console.log(err);
     });
     $scope.deleteMovie = function(id,index){
-        Movies.deleteAction(id).then(function(response){
-            console.log(response,index);
+        if(confirm('Are you sure you want to delete ' + $scope.movies[index].title )){
+            Movies.deleteAction(id).then(function(response){
+                $scope.movies.splice(index, 1);
+            },function(err){
+                //TODO::handle error
+                console.log(err);
+            })
+        }
+
+    }
+}]);
+controllers.controller('MoviesFormController',['$scope','Movies','GeneralService',function($scope,Movies,GeneralService){
+    $scope.movie = {img:'',title:''};
+    $scope.createMovie = function(movie){
+        Movies.createAction(movie).then(function(response){
+            console.log(response);
+            GeneralService.redirect('movies',null,null);
         },function(err){
+            //TODO::handle error
             console.log(err);
         })
     }
