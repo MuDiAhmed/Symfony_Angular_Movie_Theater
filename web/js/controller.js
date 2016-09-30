@@ -9,7 +9,17 @@ controllers.controller('MainController',['$scope',function($scope){
     }
 }]);
 
-controllers.controller('MoviesController',['$scope',function($scope){
-    $scope.test = 'hhhh';
-    console.log('fdsfgsd');
+controllers.controller('MoviesController',['$scope','Movies',function($scope,Movies){
+    Movies.indexAction().then(function(response){
+        $scope.movies = response;
+    },function(err){
+        console.log(err);
+    });
+    $scope.deleteMovie = function(id,index){
+        Movies.deleteAction(id).then(function(response){
+            console.log(response,index);
+        },function(err){
+            console.log(err);
+        })
+    }
 }]);

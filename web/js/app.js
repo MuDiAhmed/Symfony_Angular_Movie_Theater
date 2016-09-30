@@ -6,7 +6,8 @@
  */
 var app = angular.module('MyApp',[
     'controllers',
-    'ui.router'
+    'ui.router',
+    'services'
 ]);
 
 app.config(['$stateProvider', '$urlRouterProvider',

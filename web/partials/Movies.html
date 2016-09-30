@@ -1,25 +1,25 @@
-<div class="container-fluid">
 
+<div class="container-fluid">
     <div class="row">
-        <div class="col-lg-3 col-md-4 col-xs-6 thumb">
-            <a class="thumbnail" href="#">
-                Movie1
-            </a>
-        </div>
-        <div class="col-lg-3 col-md-4 col-xs-6 thumb">
-            <a class="thumbnail" href="#">
-                Movie1
-            </a>
-        </div>
-        <div class="col-lg-3 col-md-4 col-xs-6 thumb">
-            <a class="thumbnail" href="#">
-                Movie1
-            </a>
-        </div>
-        <div class="col-lg-3 col-md-4 col-xs-6 thumb">
-            <a class="thumbnail" href="#">
-                Movie1
-            </a>
+        <a class="btn btn-default">
+            Create Movie
+        </a>
+    </div>
+    <div class="row">
+        <!--<div class="col-lg-3 col-md-4 col-xs-6 thumb" ng-repeat="movie in movies">-->
+        <div class="square" ng-repeat="movie in movies" ng-style="{'background-image':'url({{movie.img}})'}">
+            <div class="container-fluid">
+                <div class="inner_wrapper thumbnail row">
+                    <a class="col-lg-6" href="#">
+                        <span>{{movie.title}}</span>
+                        <!--<img ng-src="{{movie.img}}" />-->
+                    </a>
+                    <div class="col-lg-6 align-right">
+                        <span class="fa fa-pencil-square-o pointer" aria-hidden="true"></span>
+                        <span ng-click="deleteMovie(movie.id,$index)" class="fa fa-trash-o pointer" aria-hidden="true"></span>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>
