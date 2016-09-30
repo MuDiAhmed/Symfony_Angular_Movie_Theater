@@ -34,16 +34,16 @@ class Shows
     private $end_time;
 
     /**
-     * @ORM\OneToMany(targetEntity="HallMovieShow", mappedBy="shows")
+     * @ORM\OneToMany(targetEntity="HallMovieShow", mappedBy="show")
      */
-    public $hall_movie_show;
+    public $hallMovieShow;
 
     /**
      * Constructor
      */
     public function __construct()
     {
-        $this->hall_movie_show = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->hallMovieShow = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**
@@ -113,7 +113,7 @@ class Shows
      */
     public function addHallMovieShow(\AppBundle\Entity\HallMovieShow $hallMovieShow)
     {
-        $this->hall_movie_show[] = $hallMovieShow;
+        $this->hallMovieShow[] = $hallMovieShow;
 
         return $this;
     }
@@ -125,7 +125,7 @@ class Shows
      */
     public function removeHallMovieShow(\AppBundle\Entity\HallMovieShow $hallMovieShow)
     {
-        $this->hall_movie_show->removeElement($hallMovieShow);
+        $this->hallMovieShow->removeElement($hallMovieShow);
     }
 
     /**
@@ -135,6 +135,6 @@ class Shows
      */
     public function getHallMovieShow()
     {
-        return $this->hall_movie_show;
+        return $this->hallMovieShow;
     }
 }

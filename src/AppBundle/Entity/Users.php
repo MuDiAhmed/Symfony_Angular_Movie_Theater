@@ -28,7 +28,12 @@ class Users
     private $name;
 
     /**
-     * @ORM\OneToMany(targetEntity="Tickets", mappedBy="users")
+     * @ORM\Column(type="string", length=100)
+     */
+    private $password;
+
+    /**
+     * @ORM\OneToMany(targetEntity="Tickets", mappedBy="user")
      */
     public $tickets;
     
@@ -105,5 +110,29 @@ class Users
     public function getTickets()
     {
         return $this->tickets;
+    }
+
+    /**
+     * Set password
+     *
+     * @param string $password
+     *
+     * @return Users
+     */
+    public function setPassword($password)
+    {
+        $this->password = $password;
+
+        return $this;
+    }
+
+    /**
+     * Get password
+     *
+     * @return string
+     */
+    public function getPassword()
+    {
+        return $this->password;
     }
 }

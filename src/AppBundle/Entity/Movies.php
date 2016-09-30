@@ -28,16 +28,21 @@ class Movies
     private $title;
 
     /**
-     * @ORM\OneToMany(targetEntity="HallMovieShow", mappedBy="movies")
+     * @ORM\Column(type="string", length=250)
      */
-    public $hall_movie_show;
+    private $img;
+
+    /**
+     * @ORM\OneToMany(targetEntity="HallMovieShow", mappedBy="movie")
+     */
+    public $hallMovieShow;
 
     /**
      * Constructor
      */
     public function __construct()
     {
-        $this->hall_movie_show = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->hallMovieShow = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**
@@ -83,7 +88,7 @@ class Movies
      */
     public function addHallMovieShow(\AppBundle\Entity\HallMovieShow $hallMovieShow)
     {
-        $this->hall_movie_show[] = $hallMovieShow;
+        $this->hallMovieShow[] = $hallMovieShow;
 
         return $this;
     }
@@ -95,7 +100,7 @@ class Movies
      */
     public function removeHallMovieShow(\AppBundle\Entity\HallMovieShow $hallMovieShow)
     {
-        $this->hall_movie_show->removeElement($hallMovieShow);
+        $this->hallMovieShow->removeElement($hallMovieShow);
     }
 
     /**
@@ -105,6 +110,30 @@ class Movies
      */
     public function getHallMovieShow()
     {
-        return $this->hall_movie_show;
+        return $this->hallMovieShow;
+    }
+
+    /**
+     * Set img
+     *
+     * @param string $img
+     *
+     * @return Movies
+     */
+    public function setImg($img)
+    {
+        $this->img = $img;
+
+        return $this;
+    }
+
+    /**
+     * Get img
+     *
+     * @return string
+     */
+    public function getImg()
+    {
+        return $this->img;
     }
 }

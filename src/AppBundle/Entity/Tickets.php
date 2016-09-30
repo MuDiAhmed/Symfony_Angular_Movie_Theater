@@ -26,12 +26,12 @@ class Tickets
     /**
      * @ORM\ManyToOne(targetEntity="HallMovieShow", inversedBy="tickets")
      */
-    public $hall_movie_show_id;
+    public $hallMovieShow;
 
     /**
-     * @ORM\ManyToOne(targetEntity="users", inversedBy="tickets")
+     * @ORM\ManyToOne(targetEntity="Users", inversedBy="tickets")
      */
-    private $user_id;
+    private $user;
 
     /**
      * @ORM\Column(type="integer")
@@ -118,5 +118,53 @@ class Tickets
     public function getUserId()
     {
         return $this->user_id;
+    }
+
+    /**
+     * Set hallMovieShow
+     *
+     * @param \AppBundle\Entity\HallMovieShow $hallMovieShow
+     *
+     * @return Tickets
+     */
+    public function setHallMovieShow(\AppBundle\Entity\HallMovieShow $hallMovieShow = null)
+    {
+        $this->hallMovieShow = $hallMovieShow;
+
+        return $this;
+    }
+
+    /**
+     * Get hallMovieShow
+     *
+     * @return \AppBundle\Entity\HallMovieShow
+     */
+    public function getHallMovieShow()
+    {
+        return $this->hallMovieShow;
+    }
+
+    /**
+     * Set user
+     *
+     * @param \AppBundle\Entity\Users $user
+     *
+     * @return Tickets
+     */
+    public function setUser(\AppBundle\Entity\Users $user = null)
+    {
+        $this->user = $user;
+
+        return $this;
+    }
+
+    /**
+     * Get user
+     *
+     * @return \AppBundle\Entity\Users
+     */
+    public function getUser()
+    {
+        return $this->user;
     }
 }
