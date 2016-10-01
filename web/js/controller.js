@@ -28,6 +28,7 @@ controllers.controller('MoviesController',['$scope','Movies',function($scope,Mov
 
     }
 }]);
+
 controllers.controller('MoviesFormController',['$scope','Movies','GeneralService',function($scope,Movies,GeneralService){
     $scope.movie = {img:'',title:''};
     $scope.createMovie = function(movie){
@@ -60,11 +61,62 @@ controllers.controller('HallsController',['$scope','Halls',function($scope,Halls
 
     }
 }]);
+
 controllers.controller('HallsFormController',['$scope','Halls','GeneralService',function($scope,Halls,GeneralService){
     $scope.createHall = function(hall){
         Halls.createAction(hall).then(function(response){
             console.log(response);
             GeneralService.redirect('halls',null,null);
+        },function(err){
+            //TODO::handle error
+            console.log(err);
+        })
+    }
+}]);
+
+controllers.controller('MoviesHallsController',['$scope','MoviesHalls',function($scope,MoviesHalls){
+    MoviesHalls.indexAction().then(function(response){
+        $scope.moviesHalls = response;
+    },function(err){
+        //TODO::handle error
+        console.log(err);
+    });
+    $scope.deleteMovieHall = function(id,index){
+        if(confirm('Are you sure you want to delete ' + $scope.moviesHalls[index].movie.title + ' in hall '+ $scope.moviesHalls[index].hall.name)){
+            MoviesHalls.deleteAction(id).then(function(response){
+                $scope.moviesHalls.splice(index, 1);
+            },function(err){
+                //TODO::handle error
+                console.log(err);
+            })
+        }
+
+    }
+}]);
+
+controllers.controller('MoviesHallsFormController',['$scope','MoviesHalls','GeneralService','Halls','Movies','Shows',function($scope,MoviesHalls,GeneralService,Halls,Movies,Shows){
+    Halls.indexAction().then(function(response){
+        $scope.halls = response;
+    },function(err){
+        //TODO::handle error
+        console.log(err);
+    });
+    Movies.indexAction().then(function(response){
+        $scope.movies = response;
+    },function(err){
+        //TODO::handle error
+        console.log(err);
+    });
+    Shows.indexAction().then(function(response){
+        $scope.shows = response;
+    },function(err){
+        //TODO::handle error
+        console.log(err);
+    });
+    $scope.createMovieHall = function(movieHall){
+        MoviesHalls.createAction(movieHall).then(function(response){
+            console.log(response);
+            GeneralService.redirect('movies-halls',null,null);
         },function(err){
             //TODO::handle error
             console.log(err);

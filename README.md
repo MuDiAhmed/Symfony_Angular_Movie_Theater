@@ -15,3 +15,5 @@ Movie Theater
         run `sudo php bin/console doctrine:migrations:migrate`
         run `sudo php bin/console doctrine:fixtures:load` to insert fake data to database
         run `bower install` to install bower components
+        run `sudo php bin/console server:run` to start server
+        go to `localhost:8000` and enjoy

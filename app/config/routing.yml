@@ -11,3 +11,13 @@ halls:
     type: rest
     resource: "@AppBundle/Controller/api/HallsController.php"
     prefix:   api
+
+movies-halls:
+    type: rest
+    resource: "@AppBundle/Controller/api/MovieHallController.php"
+    prefix:   api
+
+shows:
+    type: rest
+    resource: "@AppBundle/Controller/api/ShowsController.php"
+    prefix:   api

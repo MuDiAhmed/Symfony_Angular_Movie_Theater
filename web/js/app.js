@@ -44,6 +44,18 @@ app.config(['$stateProvider', '$urlRouterProvider',
                 parent:'/',
                 templateUrl: 'partials/Halls/form.html',
                 controller: 'HallsFormController'
+            })
+            .state('movies-halls', {
+                url:'/movies-halls',
+                parent:'/',
+                templateUrl: 'partials/Movies-Halls/index.html',
+                controller: 'MoviesHallsController'
+            })
+            .state('movies-halls-create', {
+                url:'/movies-halls/create',
+                parent:'/',
+                templateUrl: 'partials/Movies-Halls/form.html',
+                controller: 'MoviesHallsFormController'
             });
         $urlRouterProvider.otherwise('movies');
     }

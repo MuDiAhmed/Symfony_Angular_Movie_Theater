@@ -1,0 +1,51 @@
+<div class="container-fluid">
+    <h1 class="text-capitalize">Create Movie</h1>
+    <form name="createMovieHallForm" ng-submit="createMovieHall(movieHall)" class="form-horizontal" novalidate>
+        <div class="row">
+            <div class="form-group">
+                <label class="col-lg-3 col-md-3 col-sm-3 control-label" for="movie">Movie</label>
+                <div class="col-lg-8 col-md-8 col-sm-8">
+                    <select class="form-control" name="movie" id="movie" ng-model="movieHall.movie" required ng-options="option.id as option.title for option in movies track by option.id"></select>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-3"></div>
+            <div class="col-lg-8 col-md-8 col-sm-8" role="alert"   ng-messages="createMovieHallForm.movie.$error"   ng-messages-include="/partials/global/error-messages.html"   ng-show="createMovieHallForm.movie.$touched || createMovieHallForm.movie.$dirty"  >
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group">
+                <label class="col-lg-3 col-md-3 col-sm-3 control-label" for="hall">Hall</label>
+                <div class="col-lg-8 col-md-8 col-sm-8">
+                    <select class="form-control" name="hall" id="hall" ng-model="movieHall.hall" required ng-options="option.id as option.name for option in halls track by option.id"></select>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-3"></div>
+            <div class="col-lg-8 col-md-8 col-sm-8" role="alert"   ng-messages="createMovieHallForm.hall.$error"   ng-messages-include="/partials/global/error-messages.html"   ng-show="createMovieHallForm.hall.$touched || createMovieHallForm.hall.$dirty"  >
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group">
+                <label class="col-lg-3 col-md-3 col-sm-3 control-label" for="show">Show</label>
+                <div class="col-lg-8 col-md-8 col-sm-8">
+                    <select class="form-control" name="show" id="show" ng-model="movieHall.show" required ng-options="option.id as (option.start_time+' : '+option.end_time+' Show') for option in shows track by option.id"></select>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-3"></div>
+            <div class="col-lg-8 col-md-8 col-sm-8" role="alert"   ng-messages="createMovieHallForm.show.$error"   ng-messages-include="/partials/global/error-messages.html"   ng-show="createMovieHallForm.show.$touched || createMovieHallForm.show.$dirty"  >
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group">
+                <label class="col-lg-3 col-md-3 col-sm-3 control-label" for="price">Price</label>
+                <div class="col-lg-8 col-md-8 col-sm-8">
+                    <input class="form-control" type="number" name="price" id="price" ng-model="movieHall.price" required min="10" max="200">
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-3"></div>
+            <div class="col-lg-8 col-md-8 col-sm-8" role="alert"   ng-messages="createMovieHallForm.price.$error"   ng-messages-include="/partials/global/error-messages.html"   ng-show="createMovieHallForm.price.$touched || createMovieHallForm.price.$dirty"  >
+            </div>
+        </div>
+        <input type="submit" value="Create Movie Hall Relation" class="btn btn-default" ng-disabled="!createMovieHallForm.$dirty || createMovieHallForm.$invalid"/>
+        <a ui-sref="movies-halls">Cancel</a>
+    </form>
+</div>

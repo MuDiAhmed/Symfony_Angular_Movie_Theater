@@ -24,10 +24,10 @@ class HallsController extends Controller
      */
     public function getHallsAction()
     {
-        $movies = $this->getDoctrine()
+        $hall = $this->getDoctrine()
             ->getRepository('AppBundle:Halls')
             ->findAll();
-        return $movies;
+        return $hall;
     }
 
     /**

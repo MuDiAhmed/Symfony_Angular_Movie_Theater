@@ -139,6 +139,17 @@ a,.pointer{
     color: white;
     text-align: left;
 }
+.thumimg{
+    background-position: center center;
+    background-size: cover;
+}
+.padding{
+    padding: 0 20px;
+    color: #00b3ee;
+}
+.trans{
+    background-color: rgba(255,255,255,0.9);
+}
 @media(min-width:768px) {
     #wrapper {
         padding-left: 250px;

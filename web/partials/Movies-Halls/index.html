@@ -1,0 +1,39 @@
+<div class="container-fluid">
+    <div class="row">
+        <a class="btn btn-default" ui-sref="movies-halls-create">
+            Create Movie Hall Relation
+        </a>
+    </div>
+    <div class="row">
+        <div class="col-lg-3 col-md-4 col-xs-6 thumb thumimg" ng-repeat="item in moviesHalls" ng-style="{'background-image':'url({{item.movie.img}})'}">
+            <!--<div ng-repeat="hall in halls" >-->
+            <div class="container-fluid thumbnail trans">
+                <div class="inner_wrapper row">
+                    <div class="col-lg-8 blue">
+                        <span>{{item.movie.title}} : {{item.hall.name}}</span>
+                        <!--<img ng-src="{{movie.img}}" />-->
+                    </div>
+                    <div class="col-lg-4 align-right">
+                        <span class="fa fa-pencil-square-o pointer" aria-hidden="true"></span>
+                        <span ng-click="deleteMovieHall(item.id,$index)" class="fa fa-trash-o pointer" aria-hidden="true"></span>
+                    </div>
+                </div>
+                <div class="row">
+                    Row Chairs: {{item.hall.row_total}}
+                </div>
+                <div class="row">
+                    Total Rows: {{item.hall.row_chairs}}
+                </div>
+                <div class="row">
+                    Total Chairs: {{item.hall.row_total*item.hall.row_chairs}}
+                </div>
+                <div class="row">
+                    Show Time: {{item.show.start_time}} : {{item.show.end_time}}
+                </div>
+                <div class="row pull-right padding" >
+                    Price: {{item.price}}$
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
