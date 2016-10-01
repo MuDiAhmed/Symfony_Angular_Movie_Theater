@@ -72,12 +72,15 @@ services.factory('MoviesHalls',['$resource','Config',function($resource,Config){
         },
         createAction = function(movieHall){
             return moviesHalls.save(movieHall).$promise;
+        },
+        viewAction = function(movieHall){
+            return moviesHalls.get(movieHall).$promise;
         };
-
     return {
         indexAction:indexAction,
         deleteAction:deleteAction,
-        createAction:createAction
+        createAction:createAction,
+        viewAction:viewAction
     }
 }]);
 
@@ -89,5 +92,19 @@ services.factory('Shows',['$resource','Config',function($resource,Config){
 
     return {
         indexAction:indexAction
+    }
+}]);
+services.factory('Tickets',['$resource','Config',function($resource,Config){
+    var tickets = $resource(Config.server+'tickets/:id',null,null),
+        deleteAction = function(id){
+            return tickets.delete({id:id}).$promise;
+        },
+        createAction = function(ticket){
+            return tickets.save(ticket).$promise;
+        };
+
+    return {
+        deleteAction:deleteAction,
+        createAction:createAction
     }
 }]);

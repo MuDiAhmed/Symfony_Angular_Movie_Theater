@@ -26,14 +26,22 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 class MovieHallController extends Controller implements ClassResourceInterface
 {
     /**
+     * @param Request $request
      * @return array
      * @View()
+     * @ParamConverter("request", class="Symfony\Component\HttpFoundation\Request")
      */
-    public function cgetAction()
+    public function cgetAction(Request $request)
     {
+        $get_data = $request->query->all();
         $movie_hall = $this->getDoctrine()
-            ->getRepository('AppBundle:HallMovieShow')
-            ->findAll();
+            ->getRepository('AppBundle:HallMovieShow');
+        if($get_data){
+            $movie_hall = $movie_hall->findOneBy(['movie'=>$get_data['movie'],'hall'=>$get_data['hall'],'show'=>$get_data['show']]);
+        }else{
+            $movie_hall = $movie_hall ->findAll();
+        }
+
         return $movie_hall;
     }
 

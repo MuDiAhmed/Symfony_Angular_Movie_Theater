@@ -1,5 +1,5 @@
 
-<div class="container-fluid">
+<div class="container-fluid" ng-if="!selectMovie">
     <div class="row">
         <a class="btn btn-default" ui-sref="movies-create">
             Create Movie
@@ -7,16 +7,51 @@
     </div>
     <div class="row">
         <!--<div class="col-lg-3 col-md-4 col-xs-6 thumb" ng-repeat="movie in movies">-->
-        <div class="square" ng-repeat="movie in movies" ng-style="{'background-image':'url({{movie.img}})'}">
+        <div class="square pointer-cursor" ng-repeat="movie in movies" ng-style="{'background-image':'url({{movie.img}})'}" ng-click="selectMovieFun(movie)">
             <div class="container-fluid">
                 <div class="inner_wrapper thumbnail row">
-                    <a class="col-lg-6" href="#">
+                    <a class="col-lg-6" ng-click="selectMovieFun(movie)">
                         <span>{{movie.title}}</span>
                         <!--<img ng-src="{{movie.img}}" />-->
                     </a>
                     <div class="col-lg-6 align-right">
                         <span class="fa fa-pencil-square-o pointer" aria-hidden="true"></span>
                         <span ng-click="deleteMovie(movie.id,$index)" class="fa fa-trash-o pointer" aria-hidden="true"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container-fluid" ng-if="selectMovie">
+    <!--<h3 class="row padding">-->
+        <!--<span class="fa fa-arrow-left" aria-hidden="true"></span>Select another Movie-->
+    <!--</h3>-->
+    <div class="row full-height">
+        <div class="col-lg-6 parent-height no-padding">
+            <div class="parent-height" ng-style="{'background-image':'url({{selectedMovie.img}})'}">
+                <div class="container-fluid">
+                    <div class="inner_wrapper thumbnail row">
+                            <h3 class="padding col-lg-6 pointer-cursor" ng-click="back()"><span class="fa fa-arrow-left" aria-hidden="true" ></span>Select another Movie</h3>
+                            <h3 class="padding col-lg-6 text-right">{{selectedMovie.title}}</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-6 parent-height row">
+            <div ng-repeat="item in selectedMovie.hall_movie_show" class="col-lg-4 col-md-6 col-xs-6 thumb pointer-cursor" ui-sref="hall({hall:item.hall.id,movie:selectedMovie.id,show:item.show.id})">
+                <div class="container-fluid thumbnail">
+                    <div class="inner_wrapper row">
+                        <div class="col-lg-6 blue">
+                            <span>{{item.hall.name}}</span>
+                            <!--<img ng-src="{{movie.img}}" />-->
+                        </div>
+                    </div>
+                    <div class="row">
+                        Price: {{item.price}}
+                    </div>
+                    <div class="row">
+                        Show: {{item.show.start_time}} : {{item.show.end_time}}
                     </div>
                 </div>
             </div>

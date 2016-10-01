@@ -39,6 +39,11 @@ class Tickets
     private $chair_number;
 
     /**
+     * @ORM\Column(type="integer")
+     */
+    private $row_number;
+
+    /**
      * Get id
      *
      * @return integer
@@ -81,7 +86,7 @@ class Tickets
      */
     public function setHallMovieShowId(\AppBundle\Entity\HallMovieShow $hallMovieShowId = null)
     {
-        $this->hall_movie_show_id = $hallMovieShowId;
+        $this->hallMovieShow = $hallMovieShowId;
 
         return $this;
     }
@@ -93,7 +98,7 @@ class Tickets
      */
     public function getHallMovieShowId()
     {
-        return $this->hall_movie_show_id;
+        return $this->hallMovieShow;
     }
 
     /**
@@ -103,7 +108,7 @@ class Tickets
      *
      * @return Tickets
      */
-    public function setUserId(\AppBundle\Entity\users $userId = null)
+    public function setUserId(\AppBundle\Entity\Users $userId = null)
     {
         $this->user_id = $userId;
 
@@ -166,5 +171,29 @@ class Tickets
     public function getUser()
     {
         return $this->user;
+    }
+
+    /**
+     * Set rowNumber
+     *
+     * @param integer $rowNumber
+     *
+     * @return Tickets
+     */
+    public function setRowNumber($rowNumber)
+    {
+        $this->row_number = $rowNumber;
+
+        return $this;
+    }
+
+    /**
+     * Get rowNumber
+     *
+     * @return integer
+     */
+    public function getRowNumber()
+    {
+        return $this->row_number;
     }
 }

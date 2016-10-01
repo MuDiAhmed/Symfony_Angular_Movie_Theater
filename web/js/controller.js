@@ -10,6 +10,7 @@ controllers.controller('MainController',['$scope',function($scope){
 }]);
 
 controllers.controller('MoviesController',['$scope','Movies',function($scope,Movies){
+    $scope.selectMovie = false;
     Movies.indexAction().then(function(response){
         $scope.movies = response;
     },function(err){
@@ -26,6 +27,15 @@ controllers.controller('MoviesController',['$scope','Movies',function($scope,Mov
             })
         }
 
+    };
+
+    $scope.selectMovieFun = function(movie){
+        $scope.selectMovie = true;
+        console.log(movie);
+        $scope.selectedMovie = movie;
+    };
+    $scope.back = function(){
+        $scope.selectMovie = false;
     }
 }]);
 
@@ -117,6 +127,61 @@ controllers.controller('MoviesHallsFormController',['$scope','MoviesHalls','Gene
         MoviesHalls.createAction(movieHall).then(function(response){
             console.log(response);
             GeneralService.redirect('movies-halls',null,null);
+        },function(err){
+            //TODO::handle error
+            console.log(err);
+        })
+    }
+}]);
+
+controllers.controller('MoviesHallsTicketController',['$scope','$stateParams','MoviesHalls','Tickets',function($scope,$stateParams,MoviesHalls,Tickets){
+    console.log($stateParams);
+    var user = {
+        id :14
+    };
+    MoviesHalls.viewAction($stateParams).then(function(response){
+        console.log(response);
+        $scope.movieHall = response;
+        $scope.tickets = response.tickets;
+        $scope.rows = [];
+        $scope.chairs = [];
+        // for(var x=1;x<=response.hall.row_total;x++){
+        //     $scope.rows.push(x);
+        // }
+        var row=1;
+        var ticketsLoop = $scope.tickets.length;
+        if(!ticketsLoop){
+            ticketsLoop = 1;
+        }
+        console.log(ticketsLoop);
+
+        for(var x=1;x<=response.hall.row_chairs*response.hall.row_total;x++){
+            var taken = false;
+            for(var z=0;z<ticketsLoop;z++) {
+                if ($scope.tickets[z]) {
+                    if ($scope.tickets[z].chair_number == x && $scope.tickets[z].row_number == row) {
+                        console.log('yaah', $scope.tickets[z].chair_number, $scope.tickets[z].row_number, x, row);
+                        taken = true;
+                    }
+                }
+            }
+            $scope.chairs.push({
+                number:x,
+                row:row,
+                taken:taken
+            });
+            row = parseInt(x/response.hall.row_chairs)+1;
+        }
+        console.log($scope.chairs);
+    },function(err){
+        //TODO::handle error
+        console.log(err);
+    });
+    $scope.ticket = function(chair,index){
+        Tickets.createAction({row:chair.row,chair:chair.number,movieHall:$scope.movieHall.id,user_id:user.id}).then(function(response){
+            console.log(response);
+            $scope.tickets.push(response);
+            $scope.chairs[index].taken = true;
         },function(err){
             //TODO::handle error
             console.log(err);

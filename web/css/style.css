@@ -150,6 +150,55 @@ a,.pointer{
 .trans{
     background-color: rgba(255,255,255,0.9);
 }
+.full-height{
+    /*height: calc(100vh - 56px);*/
+    height: 100vh;
+}
+.parent-height {
+    /*float: left;*/
+    position: relative;
+    /*padding-bottom: 30%;*/
+    /*margin: 1.66%;*/
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100%;
+}
+.no-padding{
+    padding: 0px;
+}
+.pointer-cursor{
+    cursor: pointer;
+}
+.chairs{
+    display: inline-block;
+    text-align: center;
+    padding: 5px;
+    box-sizing: border-box;
+    height: 100%;
+}
+.chair_inner{
+    background-color: #00b3ee;
+    color: white;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+}
+.taken{
+    background-color: #ffffff;
+    color: #00b3ee;
+}
+.screen{
+    padding: 0 0 40px;
+    text-align: center;
+    font-size: 60px;
+    color: #00b3ee;
+}
+.less_height{
+    height: calc(100vh - 125px);
+}
 @media(min-width:768px) {
     #wrapper {
         padding-left: 250px;

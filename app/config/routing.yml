@@ -21,3 +21,8 @@ shows:
     type: rest
     resource: "@AppBundle/Controller/api/ShowsController.php"
     prefix:   api
+
+tickets:
+    type: rest
+    resource: "@AppBundle/Controller/api/TicketsController.php"
+    prefix:   api
