@@ -5,6 +5,7 @@ Movie Theater
         PHP 5.6+
         MySQL  5.7
         bower
+        composer
 
 ##Instructions
 * `cd <app_root_path>`
