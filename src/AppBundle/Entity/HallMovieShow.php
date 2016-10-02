@@ -24,14 +24,17 @@ class HallMovieShow
     private $id;
     /**
      * @ORM\ManyToOne(targetEntity="Movies", inversedBy="hallMovieShow")
+     * @ORM\JoinColumn(name="movie_id", referencedColumnName="id", onDelete="CASCADE")
      */
     private $movie;
     /**
      * @ORM\ManyToOne(targetEntity="Halls", inversedBy="hallMovieShow")
+     * @ORM\JoinColumn(name="hall_id", referencedColumnName="id", onDelete="CASCADE")
      */
     private $hall;
     /**
      * @ORM\ManyToOne(targetEntity="Shows", inversedBy="hallMovieShow")
+     * @ORM\JoinColumn(name="show_id", referencedColumnName="id", onDelete="CASCADE")
      */
     private $show;
     /**

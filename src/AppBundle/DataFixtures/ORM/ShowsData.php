@@ -16,10 +16,6 @@ class ShowsData implements FixtureInterface
 {
     public function load(ObjectManager $manager)
     {
-        $show = new Shows();
-        $show->setStartTime('09:00');
-        $show->setEndTime('12:00');
-
         $show2 = new Shows();
         $show2->setStartTime('12:00');
         $show2->setEndTime('15:00');
@@ -35,8 +31,7 @@ class ShowsData implements FixtureInterface
         $show5 = new Shows();
         $show5->setStartTime('21:00');
         $show5->setEndTime('00:00');
-
-        $manager->persist($show);
+        
         $manager->persist($show2);
         $manager->persist($show3);
         $manager->persist($show4);

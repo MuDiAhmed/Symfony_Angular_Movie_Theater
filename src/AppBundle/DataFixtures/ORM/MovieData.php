@@ -15,10 +15,7 @@ class MovieData implements FixtureInterface
 {
     public function load(ObjectManager $manager)
     {
-        $movie1 = new Movies();
-        $movie1->setTitle('Angry Birds');
-        $movie1->setImg('images/Angry-Birds.jpg');
-
+       
         $movie2 = new Movies();
         $movie2->setTitle('Batman vs Joker');
         $movie2->setImg('images/bat-joker.jpg');
@@ -38,8 +35,7 @@ class MovieData implements FixtureInterface
         $movie6 = new Movies();
         $movie6->setTitle('Straight Outta Compact');
         $movie6->setImg('images/movieposter.jpg');
-
-        $manager->persist($movie1);
+        
         $manager->persist($movie2);
         $manager->persist($movie3);
         $manager->persist($movie4);

@@ -15,11 +15,6 @@ class HallsData implements FixtureInterface
 {
     public function load(ObjectManager $manager)
     {
-        $hall = new Halls();
-        $hall->setName('Hall 1');
-        $hall->setRowChairs(15);
-        $hall->setRowTotal(8);
-
         $hall2 = new Halls();
         $hall2->setName('Hall 2');
         $hall2->setRowChairs(10);
@@ -45,7 +40,6 @@ class HallsData implements FixtureInterface
         $hall6->setRowChairs(20);
         $hall6->setRowTotal(15);
 
-        $manager->persist($hall);
         $manager->persist($hall2);
         $manager->persist($hall3);
         $manager->persist($hall4);

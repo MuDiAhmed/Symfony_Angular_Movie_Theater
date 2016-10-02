@@ -28,7 +28,8 @@ controllers.controller('MoviesController',['$scope','Movies',function($scope,Mov
         //TODO::handle error
         console.log(err);
     });
-    $scope.deleteMovie = function(id,index){
+    $scope.deleteMovie = function(id,index,event){
+        event.stopPropagation();
         if(confirm('Are you sure you want to delete ' + $scope.movies[index].title )){
             Movies.deleteAction(id).then(function(response){
                 $scope.movies.splice(index, 1);
