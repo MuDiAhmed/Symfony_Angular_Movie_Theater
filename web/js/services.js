@@ -108,3 +108,28 @@ services.factory('Tickets',['$resource','Config',function($resource,Config){
         createAction:createAction
     }
 }]);
+services.factory('Users',['$resource','Config','$window',function($resource,Config,$window){
+    var users = $resource(Config.server+'users/:id',null,{
+            login:{method:'POST',url:Config.server+'users/login'}
+        }),
+        loginAction = function(loginData){
+            return users.login(loginData).$promise;
+        },
+        getUser = function(){
+            var user = $window.localStorage.user;
+            return (user)?JSON.parse(user):false;
+        },
+        saveUser = function(user){
+            $window.localStorage.user = JSON.stringify(user);
+        },
+        logoutAction = function(){
+            delete $window.localStorage.user;
+        };
+
+    return {
+        loginAction:loginAction,
+        getUser:getUser,
+        saveUser:saveUser,
+        logoutAction:logoutAction
+    }
+}]);

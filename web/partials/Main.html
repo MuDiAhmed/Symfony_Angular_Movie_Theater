@@ -16,6 +16,17 @@
             <li>
                 <a ui-sref="movies-halls">Controller Movies Halls</a>
             </li>
+            <li ng-if="!user">
+                <form ng-submit="login(userData)">
+                    <input class="form-control" type="text" placeholder="Username..." ng-model="userData.name">
+                    <input class="form-control" type="text" placeholder="Password..." ng-model="userData.password">
+                    <input class="form-control" type="submit" value="Login">
+                </form>
+            </li>
+            <li ng-if="user" class="user_wapper">
+                <h3>{{user.name}}</h3>
+                <div class="text-right padding user_wapper pointer-cursor" ng-click="logout()">Logout</div>
+            </li>
         </ul>
     </div>
     <!-- /#sidebar-wrapper -->

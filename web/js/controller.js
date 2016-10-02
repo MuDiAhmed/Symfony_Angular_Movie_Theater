@@ -3,9 +3,20 @@
  */
 var controllers = angular.module('controllers',[]);
 
-controllers.controller('MainController',['$scope',function($scope){
-    $scope.user = {
-        name:'Mohamed Ahmed'
+controllers.controller('MainController',['$scope','Users',function($scope,Users){
+    $scope.user = Users.getUser();
+    $scope.login = function(loginData){
+        Users.loginAction(loginData).then(function(response){
+            Users.saveUser(response);
+            $scope.user = response;
+        },function(err){
+            //TODO::handle error
+            console.log(err);
+        });
+    };
+    $scope.logout = function(){
+        Users.logoutAction();
+        $scope.user = Users.getUser();
     }
 }]);
 
@@ -134,27 +145,20 @@ controllers.controller('MoviesHallsFormController',['$scope','MoviesHalls','Gene
     }
 }]);
 
-controllers.controller('MoviesHallsTicketController',['$scope','$stateParams','MoviesHalls','Tickets',function($scope,$stateParams,MoviesHalls,Tickets){
+controllers.controller('MoviesHallsTicketController',['$scope','$stateParams','MoviesHalls','Tickets','Users',function($scope,$stateParams,MoviesHalls,Tickets,Users){
     console.log($stateParams);
-    var user = {
-        id :14
-    };
+
     MoviesHalls.viewAction($stateParams).then(function(response){
         console.log(response);
         $scope.movieHall = response;
         $scope.tickets = response.tickets;
         $scope.rows = [];
         $scope.chairs = [];
-        // for(var x=1;x<=response.hall.row_total;x++){
-        //     $scope.rows.push(x);
-        // }
         var row=1;
         var ticketsLoop = $scope.tickets.length;
         if(!ticketsLoop){
             ticketsLoop = 1;
         }
-        console.log(ticketsLoop);
-
         for(var x=1;x<=response.hall.row_chairs*response.hall.row_total;x++){
             var taken = false;
             for(var z=0;z<ticketsLoop;z++) {
@@ -172,12 +176,16 @@ controllers.controller('MoviesHallsTicketController',['$scope','$stateParams','M
             });
             row = parseInt(x/response.hall.row_chairs)+1;
         }
-        console.log($scope.chairs);
     },function(err){
         //TODO::handle error
         console.log(err);
     });
     $scope.ticket = function(chair,index){
+        var user = Users.getUser();
+        if(!user){
+            alert('login first please');
+            return;
+        }
         Tickets.createAction({row:chair.row,chair:chair.number,movieHall:$scope.movieHall.id,user_id:user.id}).then(function(response){
             console.log(response);
             $scope.tickets.push(response);

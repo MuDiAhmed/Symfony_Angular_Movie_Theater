@@ -26,3 +26,8 @@ tickets:
     type: rest
     resource: "@AppBundle/Controller/api/TicketsController.php"
     prefix:   api
+
+users:
+    type: rest
+    resource: "@AppBundle/Controller/api/UsersController.php"
+    prefix:   api
