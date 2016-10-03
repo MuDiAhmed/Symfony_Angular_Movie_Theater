@@ -19,3 +19,4 @@ Movie Theater
 * run `bower install` to install bower components  
 * run `sudo php bin/console server:run` to start server  
 * go to `localhost:8000` and enjoy  
+* login with `Mohamed Ahmed` pass `123456`
