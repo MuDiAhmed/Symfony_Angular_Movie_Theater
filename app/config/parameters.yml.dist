@@ -4,9 +4,9 @@
 parameters:
     database_host:     127.0.0.1
     database_port:     ~
-    database_name:     symfony
-    database_user:     root
-    database_password: ~
+    database_name:     symfony_movie_theaters
+    database_user:     movie_theater
+    database_password: mov_thtr
     # You should uncomment this if you want use pdo_sqlite
     # database_path: "%kernel.root_dir%/data.db3"
 
