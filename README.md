@@ -9,7 +9,7 @@ Movie Theater
 
 ##Instructions
 * `cd <app_root_path>`
-* run `composer install` to install the required packages  
+* run `sudo composer install` to install the required packages  
 * create database user `movie_theater` pass `mov_thtr` with all privileges  
 **Note:**
 if you want to change database name, username, password, host, port
